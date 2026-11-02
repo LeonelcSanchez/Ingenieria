@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teoría: Diagramas Entidad-Relación</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .snap-container {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: 100vh;
+        }
+        .snap-slide {
+            scroll-snap-align: start;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased snap-container">
+
+    <!-- Diapositiva 1: Portada y Definición -->
+    <section class="snap-slide flex items-center justify-center p-8 bg-white">
+        <div class="max-w-4xl w-full text-center">
+            <h1 class="text-5xl font-bold text-teal-700 mb-6">El Diagrama Entidad-Relación (DER)</h1>
+            <p class="text-xl text-slate-600 mb-8">El estándar visual para el modelado de datos conceptual.</p>
+            <div class="bg-teal-50 border-l-4 border-teal-500 p-6 text-left rounded shadow-sm inline-block w-full">
+                <h3 class="font-semibold text-lg mb-2">¿Qué es exactamente?</h3>
+                <p class="text-slate-700 leading-relaxed">
+                    Es una herramienta gráfica que representa la estructura lógica de una base de datos. Se enfoca en identificar qué información es importante (Entidades), qué detalles la describen (Atributos) y cómo interactúan entre sí (Relaciones), independientemente del motor de base de datos que se use después.
+                </p>
+            </div>
+            <p class="mt-10 text-sm text-slate-400 animate-bounce">Desplázate hacia abajo para continuar ↓</p>
+        </div>
+    </section>
+
+    <!-- Diapositiva 2: Cuándo SÍ usarlo -->
+    <section class="snap-slide flex flex-col items-center justify-center p-8 bg-slate-100">
+        <div class="max-w-4xl w-full">
+            <h2 class="text-4xl font-bold text-slate-800 mb-8 border-b-2 border-slate-300 pb-4">¿Cuándo SE DEBE usar un DER?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-teal-500">
+                    <h3 class="text-xl font-bold text-teal-700 mb-3">Diseño Inicial</h3>
+                    <p class="text-slate-600">Al comenzar un proyecto de software para estructurar la base de datos relacional (SQL) antes de escribir una sola línea de código.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-teal-500">
+                    <h3 class="text-xl font-bold text-teal-700 mb-3">Comunicación</h3>
+                    <p class="text-slate-600">Sirve como puente entre los programadores y el cliente. Es lo suficientemente intuitivo para que alguien sin conocimientos técnicos valide la lógica del negocio.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-teal-500">
+                    <h3 class="text-xl font-bold text-teal-700 mb-3">Documentación</h3>
+                    <p class="text-slate-600">Para mapear sistemas legados (antiguos). Entender cómo está conectada la información en una base de datos que heredaste.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diapositiva 3: Cuándo NO usarlo -->
+    <section class="snap-slide flex flex-col items-center justify-center p-8 bg-white">
+        <div class="max-w-4xl w-full">
+            <h2 class="text-4xl font-bold text-slate-800 mb-8 border-b-2 border-slate-300 pb-4">¿Cuándo NO usar un DER?</h2>
+            <p class="text-lg text-slate-600 mb-8">El DER no es una herramienta mágica para todo. Falla rotundamente en los siguientes escenarios:</p>
+            
+            <div class="space-y-6">
+                <div class="flex items-start gap-4 p-4 bg-red-50 rounded-lg border border-red-100">
+                    <div class="bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">X</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-red-700">Para modelar comportamientos o procesos</h3>
+                        <p class="text-slate-700">El DER muestra <em>estado</em> (datos estáticos), no <em>flujo</em>. No sirve para explicar cómo un usuario hace login o cómo viaja la información por el sistema.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start gap-4 p-4 bg-red-50 rounded-lg border border-red-100">
+                    <div class="bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">X</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-red-700">Para Bases de Datos NoSQL</h3>
+                        <p class="text-slate-700">Si usas MongoDB, Firebase o Cassandra, la información se guarda en documentos o grafos, no en tablas relacionadas. Un DER tradicional intentará forzar una lógica que estas tecnologías no usan.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4 p-4 bg-red-50 rounded-lg border border-red-100">
+                    <div class="bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">X</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-red-700">Para modelar código (POO)</h3>
+                        <p class="text-slate-700">Aunque las Clases se parecen a las Entidades, las Clases tienen métodos (funciones). El DER ignora por completo las funciones de un sistema.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diapositiva 4: ¿Qué más existe? (Alternativas) -->
+    <section class="snap-slide flex flex-col items-center justify-center p-8 bg-slate-900 text-white">
+        <div class="max-w-4xl w-full">
+            <h2 class="text-4xl font-bold text-white mb-8 border-b-2 border-slate-700 pb-4">El Ecosistema: ¿Qué otras herramientas existen?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-slate-800 p-6 rounded-lg border-l-4 border-blue-500">
+                    <h3 class="text-2xl font-bold text-blue-400 mb-2">UML (Diagrama de Clases)</h3>
+                    <p class="text-slate-300"><strong>Uso:</strong> Programación Orientada a Objetos.</p>
+                    <p class="text-sm text-slate-400 mt-2">A diferencia del DER, incluye los métodos (acciones) que puede realizar cada clase y detalla modificadores de acceso (público/privado).</p>
+                </div>
+                
+                <div class="bg-slate-800 p-6 rounded-lg border-l-4 border-yellow-500">
+                    <h3 class="text-2xl font-bold text-yellow-400 mb-2">Modelo Relacional (Tablas)</h3>
+                    <p class="text-slate-300"><strong>Uso:</strong> Implementación física en SQL.</p>
+                    <p class="text-sm text-slate-400 mt-2">Es el paso siguiente al DER. Aquí ya no hay rombos; todo son tablas, claves primarias (PK) y claves foráneas (FK) con tipos de datos exactos (VARCHAR, INT).</p>
+                </div>
+
+                <div class="bg-slate-800 p-6 rounded-lg border-l-4 border-green-500">
+                    <h3 class="text-2xl font-bold text-green-400 mb-2">Diagrama de Flujo de Datos (DFD)</h3>
+                    <p class="text-slate-300"><strong>Uso:</strong> Lógica de procesos.</p>
+                    <p class="text-sm text-slate-400 mt-2">Muestra cómo la información entra al sistema, se transforma mediante procesos y se almacena. Es el complemento perfecto al DER.</p>
+                </div>
+
+                <div class="bg-slate-800 p-6 rounded-lg border-l-4 border-purple-500">
+                    <h3 class="text-2xl font-bold text-purple-400 mb-2">Modelado de Documentos (NoSQL)</h3>
+                    <p class="text-slate-300"><strong>Uso:</strong> Bases de datos no relacionales.</p>
+                    <p class="text-sm text-slate-400 mt-2">Se representa mediante estructuras tipo JSON, enfocándose en cómo se consultarán los datos en pantalla en lugar de normalizarlos.</p>
+                </div>
+            </div>
+            
+            <div class="mt-10 text-center">
+                <p class="text-slate-400 italic">Un buen desarrollador no usa una sola herramienta, sino que elige el diagrama adecuado para el problema adecuado.</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
